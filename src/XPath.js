@@ -1,5 +1,5 @@
 const xpath = require('xpath');
-const { DOMParser } = require('xmldom');
+const { DOMParser } = require('@xmldom/xmldom');
 
 const composeExpressionWithNamespace = require('./composeExpressionWithNamespace');
 const extendElement = require('./extendElement');
@@ -16,7 +16,7 @@ class XPath {
    * @param {string} xhtml
    */
   constructor(xhtml) {
-    const document = new DOMParser().parseFromString(xhtml);
+    const document = new DOMParser().parseFromString(xhtml, 'text/html');
     const select = xpath.useNamespaces({ [DEFAULT_NAMESPACE]: 'http://www.w3.org/1999/xhtml' });
 
     this.document = document;
